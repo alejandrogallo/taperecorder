@@ -1,0 +1,67 @@
+		Taperecorder @VERSION Installation instructions
+
+This program is designed for UNIXes and Microsoft Windows, but it can
+be compiled in various environments provided that there is a standard
+compiler and required libraries.
+
+Compilation under Unix
+----------------------
+
+In order to compile this program, you must have:
+
+  - A reasonably standard C compiler (and standard C library with
+    corresponding header files of course).
+  - The 'libconfig' library
+
+The instructions are general for most Unix software in source form:
+
+* Uncompress the sources distribution:
+
+  $ tar jxvf taperecorder-@VERSION.tar.bz2
+  or
+  $ tar zxvf taperecorder-@VERSION.tar.gz
+
+* Change to the sources directory:
+
+  $ cd taperecorder-@VERSION
+
+* Configure the package:
+
+  $ ./configure
+
+  This default configuration will probably be just fine. However, you
+  may add some configuration options to the end of that line.  Run
+  configure with `--help' to get full list of them, like this:
+
+  $ ./configure --help
+
+  By default the program executable will be installed in
+  /usr/local/bin and the lessons and internationalization support
+  files in /usr/local/share/taperecorder (you can change this with the
+  `--prefix' option).  By default Native Language Support will be
+  installed (but you can disable this with the `--disable-nls'
+  option).
+
+* Build the package:
+
+  $ make
+
+* Get required permissions and install the package:
+
+  $ sudo make install
+
+  The sudo program will ask you for the root password to install
+  taperecorder system-wide.  If you do not have the root password, you will
+  not be able to install it system-wide.  Instead, you should run
+  configure with something like '--prefix=~/opt' to install it in your
+  home directory.
+
+* To test your installation type
+
+  $ taperecorder
+
+  If you already had a version of taperecorder installed on the system
+  before you installed this one,you may need to explicitly state which
+  one you want to run. So you may need to type:
+
+  $ /usr/local/bin/taperecorder
