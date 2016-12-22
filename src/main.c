@@ -243,7 +243,7 @@ check_command(struct command_t command, char *command_name)
 
 
 int
-main(int argc, char *argv[])
+main()
 {
 
   config_t cfg;
