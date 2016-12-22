@@ -77,7 +77,7 @@ done
 # Build configuration files
 
 echo "creating build configuration files..."
-aclocal -I m4
+aclocal
 autoheader
 automake --add-missing
 
