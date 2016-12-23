@@ -8,12 +8,8 @@
 #include <libconfig.h>
 
 #include "commands.h"
+#include "definitions.h"
 
-#define MAX_SIZE_CMD 256
-#define MAX_SIZE_RECORDING_PATH_NAME 256
-#define TAPERECORDER_CONFIG_FOLDER_NAME "/.taperecorder"
-#define TAPERECORDER_RECORDINGS_FOLDER TAPERECORDER_CONFIG_FOLDER_NAME "/recordings"
-#define TAPERECORDER_CONFIG_FILE TAPERECORDER_CONFIG_FOLDER_NAME "/config"
 
 int
 get_config_dir(char *dir){
