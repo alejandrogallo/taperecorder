@@ -1,11 +1,20 @@
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT([Taperecorder], [esyscmd(./version.sh)], [aamsgallo@gmail.com], [taperecorder])
+AC_INIT([Taperecorder],
+        [esyscmd(./version.sh)],
+        [aamsgallo@gmail.com],
+        [taperecorder],
+        [https://github.com/alejandrogallo/taperecorder])
+AC_COPYRIGHT([GPLv3])
 
 AC_LANG([C])
 
 AM_INIT_AUTOMAKE([1.8.2 gnu dist-xz])
-AC_CONFIG_SRCDIR([src])
+
+dnl configure checks for this file's existence to make sure that the directory
+dnl that it is told contains the source code in fact does.
+AC_CONFIG_SRCDIR([src/main.c])
+
 AM_CONFIG_HEADER([config.h])
 
 # Checks for programs
@@ -54,11 +63,11 @@ AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_TYPE_SIGNAL
 AC_FUNC_STRTOD
-AC_CHECK_FUNCS([mempcpy memset munmap])
+AC_CHECK_FUNCS([mempcpy mkdir remove memset munmap])
 
 
 
 # Generate files
 
-AC_CONFIG_FILES([Makefile src/Makefile])
+AC_CONFIG_FILES([INSTALL Makefile src/Makefile])
 AC_OUTPUT
