@@ -1,4 +1,4 @@
-		Taperecorder @VERSION Installation instructions
+		Taperecorder Installation instructions
 
 This program is designed for UNIXes, but it can be compiled in various
 environments provided that there is a standard compiler and required libraries.
@@ -16,13 +16,13 @@ The instructions are general for most Unix software in source form:
 
 * Uncompress the sources distribution:
 
-  $ tar jxvf taperecorder-@VERSION.tar.bz2
+  $ tar jxvf taperecorder-x-y.tar.bz2
   or
-  $ tar zxvf taperecorder-@VERSION.tar.gz
+  $ tar zxvf taperecorder-x-y.tar.gz
 
 * Change to the sources directory:
 
-  $ cd taperecorder-@VERSION
+  $ cd taperecorder-x-y
 
 * Configure the package:
 
