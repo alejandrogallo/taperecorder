@@ -1,8 +1,7 @@
 		Taperecorder @VERSION Installation instructions
 
-This program is designed for UNIXes and Microsoft Windows, but it can
-be compiled in various environments provided that there is a standard
-compiler and required libraries.
+This program is designed for UNIXes, but it can be compiled in various
+environments provided that there is a standard compiler and required libraries.
 
 Compilation under Unix
 ----------------------
