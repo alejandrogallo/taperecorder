@@ -9,6 +9,7 @@ AC_COPYRIGHT([GPLv3])
 
 AC_LANG([C])
 
+
 AM_INIT_AUTOMAKE([1.8.2 gnu dist-xz])
 
 dnl configure checks for this file's existence to make sure that the directory
@@ -69,5 +70,5 @@ AC_CHECK_FUNCS([mempcpy mkdir remove memset munmap])
 
 # Generate files
 
-AC_CONFIG_FILES([INSTALL Makefile src/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile])
 AC_OUTPUT
