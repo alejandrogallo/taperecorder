@@ -31,10 +31,6 @@ AC_PROG_CC_STDC
 AC_C_TYPEOF
 
 
-# Set of available languages.
-
-ALL_LINGUAS="en"
-
 # Checks for libraries.
 
 PKG_CHECK_MODULES([LIBCONFIG], [libconfig >= 1.4],,
@@ -45,7 +41,19 @@ PKG_CHECK_MODULES([LIBCONFIG], [libconfig >= 1.4],,
 # Checks for header files.
 
 AC_HEADER_STDC
-AC_CHECK_HEADERS([libconfig.h regex.h unistd.h alloca.h errno.h limits.h malloc.h stddef.h stdlib.h string.h sys/param.h unistd.h])
+AC_CHECK_HEADERS([libconfig.h \
+                  regex.h \
+                  getopt.h \
+                  unistd.h \
+                  alloca.h \
+                  errno.h \
+                  limits.h \
+                  malloc.h \
+                  stddef.h \
+                  stdlib.h \
+                  string.h \
+                  sys/param.h \
+                  unistd.h])
 
 
 # Checks for typedefs, structures, and compiler characteristics.
@@ -57,14 +65,13 @@ AC_C_VOLATILE
 AC_TYPE_SIZE_T
 
 # Checks for library functions.
-
 AC_PROG_GCC_TRADITIONAL
 AC_FUNC_ALLOCA
 AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_TYPE_SIGNAL
 AC_FUNC_STRTOD
-AC_CHECK_FUNCS([mempcpy mkdir remove memset munmap])
+AC_CHECK_FUNCS([mkdir remove memset strcmp strcpy strcat malloc])
 
 
 
