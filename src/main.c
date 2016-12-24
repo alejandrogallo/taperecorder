@@ -5,7 +5,6 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <libconfig.h>
 #include <getopt.h>
 
 #include "config.h"
@@ -40,8 +39,6 @@ int
 main()
 {
 
-  config_t cfg;
-  char *config_file_path = malloc(MAX_SIZE_RECORDING_PATH_NAME);
 
   /*Configuration variables*/
   const char *rec_command = "rec %s";
@@ -66,20 +63,12 @@ main()
 
   mkconfig_dir();
 
-  /*configuration init*/
-  config_init(&cfg);
-  get_config_file(config_file_path);
-#ifdef DEBUG
-  printf("Reading config file %s\n", config_file_path);
-#endif
-  if ( ! config_read_file( &cfg, config_file_path) ) {
-    fprintf(stderr, "Error reading configuration file\n");
-  }
+
 
   /*parse configuration variables*/
-  config_lookup_string(&cfg, "rec_command", &rec_command);
-  config_lookup_string(&cfg, "play_command", &play_command);
-  config_lookup_string(&cfg, "prompt", &prompt);
+  get_config_string("rec_command", &rec_command);
+  get_config_string("play_command", &play_command);
+  get_config_string("prompt", &prompt);
 
   /*regex compilation*/
   regex_compile_result = regcomp(&command_regex,

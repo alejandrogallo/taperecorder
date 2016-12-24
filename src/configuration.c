@@ -4,6 +4,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <libconfig.h>
 
 #include "config.h"
 #include "definitions.h"
@@ -62,5 +63,33 @@ mkconfig_dir(void)
 
   return 0;
 
+}
+
+int
+get_config(config_t* cfg)
+{
+  char *config_file_path = malloc(MAX_SIZE_RECORDING_PATH_NAME);
+
+  /*configuration init*/
+  config_init(cfg);
+  get_config_file(config_file_path);
+#ifdef DEBUG
+  printf("Reading config file %s\n", config_file_path);
+#endif
+  if ( ! config_read_file( cfg, config_file_path) ) {
+    fprintf(stderr, "Error reading configuration file\n");
+    config_destroy(cfg);
+    return 1;
+  }
+  return 0;
+}
+
+int
+get_config_string(char *keyword, const char **value){
+  config_t cfg;
+  get_config(&cfg);
+  config_lookup_string(&cfg, keyword, value);
+  config_destroy(&cfg);
+  return 0;
 }
 
