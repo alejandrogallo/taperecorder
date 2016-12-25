@@ -1,18 +1,11 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
-#include <definitions.h>
-
 typedef struct command_t {
   const char name[265];
   const char *aliases[5];
   const int na;
 } command_t;
-
-
-
-
-
 
 int
 list_recordings();
@@ -37,4 +30,3 @@ enter_shell_loop(void);
 
 #endif /* ifndef COMMANDS_H */
 
-/* vim-run: rm bin/taperecorder ; make && ./bin/taperecorder  */
