@@ -88,8 +88,22 @@ int
 get_config_string(char *keyword, const char **value){
   config_t cfg;
   get_config(&cfg);
+
+#ifdef DEBUG
+  printf("Getting %s (%s) from configuration\n", keyword, *value);
+#endif
+
   config_lookup_string(&cfg, keyword, value);
-  config_destroy(&cfg);
+
+#ifdef DEBUG
+  printf("    Result -> '%s'\n", *value);
+#endif
+
+  /*config_destroy(&cfg);*/
   return 0;
 }
+
+
+/* vim-run: make && ./src/taperecorder  */
+/* vim-run: make CFLAGS=-DDEBUG && ./src/taperecorder  */
 

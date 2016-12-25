@@ -1,3 +1,4 @@
+#include <definitions.h>
 
 typedef struct command_t {
   const char name[265];

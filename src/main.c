@@ -41,13 +41,14 @@ main()
 
 
   /*Configuration variables*/
-  const char *rec_command = "rec %s";
-  const char *play_command = "play %s";
-  const char *prompt = ">> ";
+  const char *clear_command = malloc(sizeof(char*)*MAX_SIZE_CMD);
+  const char *play_command = malloc(sizeof(char*)*MAX_SIZE_CMD);
+  const char *rec_command = malloc(sizeof(char*)*MAX_SIZE_CMD);
+  const char *prompt = malloc(sizeof(char*)*MAX_SIZE_CMD);
 
-  char *command = malloc(MAX_SIZE_CMD);
-  char *command_name = malloc(MAX_SIZE_CMD);
-  char *command_argument = malloc(MAX_SIZE_CMD);
+  char *command = malloc(sizeof(char*)*MAX_SIZE_CMD);
+  char *command_name = malloc(sizeof(char*)*MAX_SIZE_CMD);
+  char *command_argument = malloc(sizeof(char*)*MAX_SIZE_CMD);
 
   /*regex initialization*/
   regex_t command_regex;
@@ -61,14 +62,17 @@ main()
   size_t nmatch = 3;
   regmatch_t *pmatch = malloc(nmatch*sizeof(int));
 
+
   mkconfig_dir();
 
 
 
   /*parse configuration variables*/
+  get_config_string("clear_command", &clear_command);
   get_config_string("rec_command", &rec_command);
   get_config_string("play_command", &play_command);
   get_config_string("prompt", &prompt);
+
 
   /*regex compilation*/
   regex_compile_result = regcomp(&command_regex,
@@ -115,10 +119,10 @@ main()
         printf("command_argument = %s\n", command_argument);
 #endif
       }
-#ifdef DEBUG
-      printf("%d -> %d\n", pmatch[i].rm_so, pmatch[i].rm_eo);
-      printf("%d\n", i);
-#endif
+/*#ifdef DEBUG*/
+      /*printf("%d -> %d\n", pmatch[i].rm_so, pmatch[i].rm_eo);*/
+      /*printf("%d\n", i);*/
+/*#endif*/
     }
 
     if ( check_command(QUIT, command_name) == 0 ) {
@@ -132,7 +136,7 @@ main()
     } else if ( check_command(DELETE, command_name) == 0 ) {
       delete(atoi(command_argument));
     } else if ( check_command(CLEAR, command_name) == 0 ) {
-      system("clear");
+      system(clear_command);
     } else {
       printf(" !! Unkown command: %s\n", command );
     }
@@ -146,4 +150,5 @@ main()
 
 }
 
-/* vim-run: make && ./bin/taperecorder  */
+/* vim-run: make && ./src/taperecorder  */
+/* vim-run: make CFLAGS=-DDEBUG && ./src/taperecorder  */
