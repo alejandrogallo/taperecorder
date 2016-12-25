@@ -1,3 +1,6 @@
+#ifndef COMMANDS_H
+#define COMMANDS_H
+
 #include <definitions.h>
 
 typedef struct command_t {
@@ -9,60 +12,6 @@ typedef struct command_t {
 
 
 
-struct command_t RECORD = {
-  "record",
-  {
-    "record",
-    "r",
-    "rec"
-  },
-  3
-};
-struct command_t PLAY = {
-  "play",
-  {
-    "play",
-    "p"
-  },
-  2
-};
-struct command_t LIST = {
-  "list",
-  {
-    "list",
-    "ls",
-    "l"
-  },
-  3
-};
-struct command_t DELETE = {
-  "delete",
-  {
-    "delete",
-    "d",
-    "rm",
-    "remove",
-    "r"
-  },
-  5
-};
-struct command_t QUIT = {
-  "quit",
-  {
-    "quit",
-    "q",
-    "exit" 
-  },
-  3
-};
-struct command_t CLEAR = {
-  "clear",
-  {
-    "clear",
-    "cls"
-  },
-  2
-};
 
 
 int
@@ -76,5 +25,16 @@ play(const char *command, int recording_number);
 
 int
 record(const char *command, char *filename) ;
+
+int
+check_command(struct command_t command, char *command_name);
+
+int
+run_command (char *command);
+
+int
+enter_shell_loop(void);
+
+#endif /* ifndef COMMANDS_H */
 
 /* vim-run: rm bin/taperecorder ; make && ./bin/taperecorder  */

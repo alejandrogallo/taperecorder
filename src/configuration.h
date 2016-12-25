@@ -1,3 +1,6 @@
+#ifndef CONFIGURATION_H
+#define CONFIGURATION_H
+
 #include <libconfig.h>
 int
 get_config_dir(char *dir);
@@ -17,3 +20,4 @@ get_config(config_t* cfg);
 int
 get_config_string(char *keyword, const char **value);
 
+#endif /* ifndef CONFIGURATION_H */
