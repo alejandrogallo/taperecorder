@@ -5,6 +5,7 @@
 #include <dirent.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <readline/readline.h>
 
 #include "definitions.h"
 #include "configuration.h"
@@ -342,13 +343,15 @@ enter_shell_loop(void)
 
   while (1) {
 
-    printf(prompt);
+    command = readline(prompt);
 
-    fgets(command, sizeof(char*)*MAX_SIZE_CMD, stdin);
+    if (strlen(command)==0) {
+      continue;
+    }
 
     run_command(command);
 
-    memset(command, 0, MAX_SIZE_CMD*sizeof(char*));
+    free(command);
 
   }
 

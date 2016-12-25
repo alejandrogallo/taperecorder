@@ -44,6 +44,7 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS([libconfig.h \
                   regex.h \
                   getopt.h \
+                  readline/readline.h \
                   unistd.h \
                   alloca.h \
                   errno.h \

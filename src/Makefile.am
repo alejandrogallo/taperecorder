@@ -7,5 +7,5 @@ commands.c \
 configuration.c \
 definitions.h
 
-taperecorder_LDFLAGS = -lconfig
+taperecorder_LDFLAGS = -lconfig -lreadline
 
