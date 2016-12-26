@@ -18,6 +18,10 @@ AC_CONFIG_SRCDIR([src/main.c])
 
 AM_CONFIG_HEADER([config.h])
 
+AC_DEFINE([PACKAGE_DESCRIPTION],
+          ["A simple taprecorder program"],
+          [Short description])
+
 # Checks for programs
 
 AC_PROG_AWK
